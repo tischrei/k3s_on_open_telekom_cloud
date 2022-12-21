@@ -81,22 +81,26 @@ variable "keypair" {
   description = "Keypair to access the server"
 }
 
-var "image_id_servers" {
+variable "image_id_servers" {
   type = string
   description = "Image ID for the servers"
+  default = "d91805fd-0eae-4de1-9d51-9cd24d2a32c1"
 }
 
-var "flavor_id_servers" {
+variable "flavor_id_servers" {
   type = string
   description = "Flavor ID for the servers"
+  default = "s3.large.4"
 }
 
-var "image_id_workers" {
+variable "image_id_workers" {
   type = string
   description = "Image ID for the workers"
+  default = "d91805fd-0eae-4de1-9d51-9cd24d2a32c1"
 }
 
-var "flavor_id_workers" {
+variable "flavor_id_workers" {
   type = string
   description = "Flavor ID for the workers"
+  default = "s3.large.4"
 }

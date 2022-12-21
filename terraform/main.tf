@@ -41,4 +41,8 @@ module "compute" {
   domain_name = var.domain_name
   tenant_name = var.tenant_name
   keypair = var.keypair
+  image_id_servers = var.image_id_servers
+  flavor_id_servers = var.flavor_id_servers
+  image_id_workers = var.image_id_workers
+  flavor_id_workers = var.flavor_id_workers
 }

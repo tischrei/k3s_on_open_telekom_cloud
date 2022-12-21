@@ -26,7 +26,7 @@ resource "opentelekomcloud_compute_keypair_v2" "k3s_keypair" {
 
 resource "opentelekomcloud_compute_instance_v2" "server_1" {
   name            = "server_1"
-  image_id        = var.image_id
+  image_id        = var.image_id_servers
   flavor_id       = var.flavor_id_servers
   key_pair        = opentelekomcloud_compute_keypair_v2.k3s_keypair.name
   security_groups = ["default"]
