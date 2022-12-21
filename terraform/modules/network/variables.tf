@@ -1,37 +1,38 @@
 # Provider
 
 variable "user_name" {
-    default = "user_name"
+  type = string
+  description = "User name"
 }
 
 variable "password" {
-    default = "password"
+  type = string
+  description = "Password"
 }
 
 variable "domain_name" {
-    default = "domain_name"
+  type = string
+  description = "Domain name"
 }
 
 variable "tenant_name" {
-    default = "tenant_name"
+  type = string
+  description = "Tenant / Project name"
 }
 
 # VPC
 
 variable "vpc_name" {
-  default = "vpc_k3s"
   type = string
   description = "Name of the VPC / Router"
 }
 
 variable "vpc_cidr" {
-  default = "192.168.0.0/16"
   type = string
   description = "CIDR of the VPC"
 }
 
 variable "ntp_server" {
-  default = "100.125.4.25,8.8.8.8"
   type = string
   description = "NTP server"
 }
@@ -39,37 +40,31 @@ variable "ntp_server" {
 # Subnets
 
 variable "subnet_server_name" {
-  default = "subnet_server"
   type = string
   description = "Subnet name for the k3s management plane."
 }
 
 variable "subnet_server_cidr" {
-  default = "192.168.1.0/24"
   type = string
   description = "CIDR for the management plane subnet."
 }
 
 variable "subnet_server_gateway_ip" {
-  default = "192.168.1.1"
   type = string
   description = "Gateway IP for the management plane subnet"
 }
 
 variable "subnet_worker_name" {
-  default = "subnet_worker"
   type = string
   description = "Subnet name for the k3s workers."
 }
 
 variable "subnet_worker_cidr" {
-  default = "192.168.2.0/24"
   type = string
   description = "CIDR for the workers subnet"
 }
 
 variable "subnet_worker_gateway_ip" {
-  default = "192.168.2.1"
   type = string
   description = "Gateway IP for the "
 }
