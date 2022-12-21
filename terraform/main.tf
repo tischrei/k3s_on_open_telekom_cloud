@@ -32,3 +32,13 @@ module "network" {
   subnet_worker_cidr = var.subnet_worker_cidr
   subnet_worker_gateway_ip = var.subnet_worker_gateway_ip
 }
+
+module "compute" {
+  source = "./modules/compute"
+
+  user_name = var.user_name
+  password = var.password
+  domain_name = var.domain_name
+  tenant_name = var.tenant_name
+  keypair = var.keypair
+}

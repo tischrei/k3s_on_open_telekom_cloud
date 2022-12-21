@@ -73,3 +73,30 @@ variable "subnet_worker_gateway_ip" {
   type = string
   description = "Gateway IP for the "
 }
+
+# Keypair
+
+variable "keypair" {
+  type = string
+  description = "Keypair to access the server"
+}
+
+var "image_id_servers" {
+  type = string
+  description = "Image ID for the servers"
+}
+
+var "flavor_id_servers" {
+  type = string
+  description = "Flavor ID for the servers"
+}
+
+var "image_id_workers" {
+  type = string
+  description = "Image ID for the workers"
+}
+
+var "flavor_id_workers" {
+  type = string
+  description = "Flavor ID for the workers"
+}
