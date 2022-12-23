@@ -38,7 +38,7 @@ resource "opentelekomcloud_ecs_instance_v1" "server_2" {
     network_id = var.subnet_server
   }
 
-  availability_zone = "eu-de-02"
+  availability_zone = "eu-de-01"
   key_name          = opentelekomcloud_compute_keypair_v2.k3s_keypair.name
 }
 

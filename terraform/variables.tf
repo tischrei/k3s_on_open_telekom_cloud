@@ -81,6 +81,8 @@ variable "keypair" {
   description = "Keypair to access the server"
 }
 
+# Compute
+
 variable "image_id_servers" {
   type = string
   description = "Image ID for the servers"
