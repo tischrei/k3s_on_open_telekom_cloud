@@ -7,16 +7,6 @@ terraform {
   }
 }
 
-provider "opentelekomcloud" {
-  user_name   = var.user_name
-  password    = var.password
-  domain_name = var.domain_name
-  tenant_name = var.tenant_name
-  auth_url    = "https://iam.eu-de.otc.t-systems.com/v3"
-}
-
-# Keypair
-
 resource "opentelekomcloud_compute_keypair_v2" "k3s_keypair" {
   name       = "k3s_keypair"
   public_key = var.keypair
@@ -24,15 +14,45 @@ resource "opentelekomcloud_compute_keypair_v2" "k3s_keypair" {
 
 # Instances
 
-resource "opentelekomcloud_compute_instance_v2" "server_1" {
-  name            = "server_1"
-  image_id        = var.image_id_servers
-  flavor_id       = var.flavor_id_servers
-  key_pair        = opentelekomcloud_compute_keypair_v2.k3s_keypair.name
-  security_groups = ["default"]
+resource "opentelekomcloud_ecs_instance_v1" "server_1" {
+  name     = "server_1"
+  image_id = var.image_id_servers
+  flavor   = var.flavor_id_servers
+  vpc_id   = var.vpc_id
 
-  network {
-    name = "my_network"
+  nics {
+    network_id = var.subnet_server
   }
+
+  availability_zone = "eu-de-01"
+  key_name          = opentelekomcloud_compute_keypair_v2.k3s_keypair.name
+}
+
+resource "opentelekomcloud_ecs_instance_v1" "server_2" {
+  name     = "server_2"
+  image_id = var.image_id_servers
+  flavor   = var.flavor_id_servers
+  vpc_id   = var.vpc_id
+
+  nics {
+    network_id = var.subnet_server
+  }
+
+  availability_zone = "eu-de-02"
+  key_name          = opentelekomcloud_compute_keypair_v2.k3s_keypair.name
+}
+
+resource "opentelekomcloud_ecs_instance_v1" "server_3" {
+  name     = "server_3"
+  image_id = var.image_id_servers
+  flavor   = var.flavor_id_servers
+  vpc_id   = var.vpc_id
+
+  nics {
+    network_id = var.subnet_server
+  }
+
+  availability_zone = "eu-de-03"
+  key_name          = opentelekomcloud_compute_keypair_v2.k3s_keypair.name
 }
 

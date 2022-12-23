@@ -1,25 +1,3 @@
-# Provider
-
-variable "user_name" {
-  type = string
-  description = "User name"
-}
-
-variable "password" {
-  type = string
-  description = "Password"
-}
-
-variable "domain_name" {
-  type = string
-  description = "Domain name"
-}
-
-variable "tenant_name" {
-  type = string
-  description = "Tenant / Project name"
-}
-
 # Keypair
 
 variable "keypair" {
@@ -27,11 +5,29 @@ variable "keypair" {
   description = "Keypair to access the server"
 }
 
+# Network
+
+variable "vpc_id" {
+  description = "Subnet for k3s worker"
+  type        = string
+}
+
+variable "subnet_server" {
+  description = "Subnet for k3s management plane"
+  type        = string
+}
+
+variable "subnet_worker" {
+  description = "Subnet for k3s worker"
+  type        = string
+}
+
 # Compute
 
 variable "image_id_servers" {
   type = string
   description = "Image ID for the servers"
+  default = "d91805fd-0eae-4de1-9d51-9cd24d2a32c1"
 }
 
 variable "flavor_id_servers" {

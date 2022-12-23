@@ -18,10 +18,10 @@ provider "opentelekomcloud" {
 module "network" {
   source = "./modules/network"
 
-  user_name = var.user_name
-  password = var.password
-  domain_name = var.domain_name
-  tenant_name = var.tenant_name
+  # user_name = var.user_name
+  # password = var.password
+  # domain_name = var.domain_name
+  # tenant_name = var.tenant_name
   vpc_name = var.vpc_name
   vpc_cidr = var.vpc_cidr
   ntp_server = var.ntp_server
@@ -36,10 +36,9 @@ module "network" {
 module "compute" {
   source = "./modules/compute"
 
-  user_name = var.user_name
-  password = var.password
-  domain_name = var.domain_name
-  tenant_name = var.tenant_name
+  vpc_id = module.network.vpc_id
+  subnet_server = module.network.subnet_server.id
+  subnet_worker = module.network.subnet_worker.id
   keypair = var.keypair
   image_id_servers = var.image_id_servers
   flavor_id_servers = var.flavor_id_servers

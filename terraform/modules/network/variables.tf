@@ -1,25 +1,3 @@
-# Provider
-
-variable "user_name" {
-  type = string
-  description = "User name"
-}
-
-variable "password" {
-  type = string
-  description = "Password"
-}
-
-variable "domain_name" {
-  type = string
-  description = "Domain name"
-}
-
-variable "tenant_name" {
-  type = string
-  description = "Tenant / Project name"
-}
-
 # VPC
 
 variable "vpc_name" {
