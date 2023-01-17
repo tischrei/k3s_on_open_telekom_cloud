@@ -34,6 +34,7 @@ resource "opentelekomcloud_vpc_subnet_v1" "subnet_worker" {
   ntp_addresses = var.ntp_server
 }
 
+
 # SG Worker
 
 resource "opentelekomcloud_networking_secgroup_v2" "sg_worker" {

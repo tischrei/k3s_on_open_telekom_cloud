@@ -27,7 +27,7 @@ variable "subnet_worker" {
 variable "image_id_servers" {
   type = string
   description = "Image ID for the servers"
-  default = "d91805fd-0eae-4de1-9d51-9cd24d2a32c1"
+  default = "b2bd79fe-4696-41aa-bc0d-49a0e5df0fdf"
 }
 
 variable "flavor_id_servers" {

@@ -18,10 +18,6 @@ provider "opentelekomcloud" {
 module "network" {
   source = "./modules/network"
 
-  # user_name = var.user_name
-  # password = var.password
-  # domain_name = var.domain_name
-  # tenant_name = var.tenant_name
   vpc_name = var.vpc_name
   vpc_cidr = var.vpc_cidr
   ntp_server = var.ntp_server
@@ -45,3 +41,19 @@ module "compute" {
   image_id_workers = var.image_id_workers
   flavor_id_workers = var.flavor_id_workers
 }
+
+module "tunnel" {
+  source = "./modules/tunnel"
+
+  peer_conn_name = var.peer_conn_name
+  k3s_vpc_id = module.network.vpc_id
+  subnet_server_cidr = var.subnet_server_cidr
+  controller_vpc_id = var.controller_vpc_id
+  controller_subnet_cidr = var.controller_subnet_cidr
+}
+
+# module "lb" {
+#   source = "./modules/lb"
+
+#   subnet_server = module.network.subnet_server
+# }

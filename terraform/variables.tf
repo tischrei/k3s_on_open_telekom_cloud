@@ -86,7 +86,7 @@ variable "keypair" {
 variable "image_id_servers" {
   type = string
   description = "Image ID for the servers"
-  default = "d91805fd-0eae-4de1-9d51-9cd24d2a32c1"
+  default = "b2bd79fe-4696-41aa-bc0d-49a0e5df0fdf"
 }
 
 variable "flavor_id_servers" {
@@ -105,4 +105,24 @@ variable "flavor_id_workers" {
   type = string
   description = "Flavor ID for the workers"
   default = "s3.large.4"
+}
+
+# Tunnel
+
+variable "peer_conn_name" {
+  type = string
+  description = "k3s peering name"
+  default = "peering_k3s"
+}
+
+variable "controller_vpc_id" {
+  type = string
+  description = "VPC where the remote control takes place"
+  default = "34573073-5cbf-4345-a26a-4f7f31ea8e7b"
+}
+
+variable "controller_subnet_cidr" {
+  type = string
+  description = "Subnet where the remote control takes place."
+  default = "192.168.0.0/24"
 }

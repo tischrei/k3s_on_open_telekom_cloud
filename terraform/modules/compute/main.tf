@@ -20,11 +20,14 @@ resource "opentelekomcloud_ecs_instance_v1" "server_1" {
   flavor   = var.flavor_id_servers
   vpc_id   = var.vpc_id
 
+  system_disk_type            = "SAS"
+  system_disk_size            = "20"
+
   nics {
     network_id = var.subnet_server
   }
 
-  availability_zone = "eu-de-01"
+  availability_zone = "eu-nl-01"
   key_name          = opentelekomcloud_compute_keypair_v2.k3s_keypair.name
 }
 
@@ -34,25 +37,13 @@ resource "opentelekomcloud_ecs_instance_v1" "server_2" {
   flavor   = var.flavor_id_servers
   vpc_id   = var.vpc_id
 
-  nics {
-    network_id = var.subnet_server
-  }
-
-  availability_zone = "eu-de-01"
-  key_name          = opentelekomcloud_compute_keypair_v2.k3s_keypair.name
-}
-
-resource "opentelekomcloud_ecs_instance_v1" "server_3" {
-  name     = "server_3"
-  image_id = var.image_id_servers
-  flavor   = var.flavor_id_servers
-  vpc_id   = var.vpc_id
+  system_disk_type            = "SAS"
+  system_disk_size            = "20"
 
   nics {
     network_id = var.subnet_server
   }
 
-  availability_zone = "eu-de-03"
+  availability_zone = "eu-nl-02"
   key_name          = opentelekomcloud_compute_keypair_v2.k3s_keypair.name
 }
-
