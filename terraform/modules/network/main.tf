@@ -208,3 +208,27 @@ resource "opentelekomcloud_networking_secgroup_rule_v2" "sg_server_rule_9" {
   remote_group_id = opentelekomcloud_networking_secgroup_v2.sg_worker.id
   security_group_id = opentelekomcloud_networking_secgroup_v2.sg_server.id
 }
+
+resource "opentelekomcloud_networking_floatingip_v2" "fip_1" {}
+
+resource "opentelekomcloud_nat_gateway_v2" "this" {
+  name                = "k3s_gw"
+  description         = "K3S NAT Gateway"
+  spec                = "1"
+  router_id           = opentelekomcloud_vpc_v1.vpc_v1.id
+  internal_network_id = opentelekomcloud_vpc_subnet_v1.subnet_server.network_id
+}
+
+resource "opentelekomcloud_nat_snat_rule_v2" "snat_subnet_server" {
+  nat_gateway_id = opentelekomcloud_nat_gateway_v2.this.id
+  floating_ip_id = opentelekomcloud_networking_floatingip_v2.fip_1.id
+  cidr           = var.subnet_server_cidr
+  source_type    = 0
+}
+
+resource "opentelekomcloud_nat_snat_rule_v2" "snat_subnet_worker" {
+  nat_gateway_id = opentelekomcloud_nat_gateway_v2.this.id
+  floating_ip_id = opentelekomcloud_networking_floatingip_v2.fip_1.id
+  cidr           = var.subnet_worker_cidr
+  source_type    = 0
+}

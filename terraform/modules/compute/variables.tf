@@ -22,6 +22,16 @@ variable "subnet_worker" {
   type        = string
 }
 
+variable "secgroup_server" {
+  type = string
+  description = "Security group id of server instances"
+}
+
+variable "secgroup_worker" {
+  type = string
+  description = "Security group id of worker instances"
+}
+
 # Compute
 
 variable "image_id_servers" {

@@ -40,20 +40,7 @@ module "compute" {
   flavor_id_servers = var.flavor_id_servers
   image_id_workers = var.image_id_workers
   flavor_id_workers = var.flavor_id_workers
+  secgroup_server = module.network.secgroup_server.id
+  secgroup_worker = module.network.secgroup_worker.id
+  
 }
-
-module "tunnel" {
-  source = "./modules/tunnel"
-
-  peer_conn_name = var.peer_conn_name
-  k3s_vpc_id = module.network.vpc_id
-  subnet_server_cidr = var.subnet_server_cidr
-  controller_vpc_id = var.controller_vpc_id
-  controller_subnet_cidr = var.controller_subnet_cidr
-}
-
-# module "lb" {
-#   source = "./modules/lb"
-
-#   subnet_server = module.network.subnet_server
-# }

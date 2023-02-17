@@ -27,6 +27,7 @@ resource "opentelekomcloud_ecs_instance_v1" "server_1" {
     network_id = var.subnet_server
   }
 
+  security_groups = [var.secgroup_server]
   availability_zone = "eu-nl-01"
   key_name          = opentelekomcloud_compute_keypair_v2.k3s_keypair.name
 }
@@ -44,6 +45,7 @@ resource "opentelekomcloud_ecs_instance_v1" "server_2" {
     network_id = var.subnet_server
   }
 
+  security_groups = [var.secgroup_server]
   availability_zone = "eu-nl-02"
   key_name          = opentelekomcloud_compute_keypair_v2.k3s_keypair.name
 }
